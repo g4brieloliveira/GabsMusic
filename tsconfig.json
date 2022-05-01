@@ -1,5 +1,5 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
@@ -8,10 +8,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true,
-    "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"]
-    }
-  }
+    "strict": true
+  },
+  "types": ["jest", "styled-components-react-native"]
 }
