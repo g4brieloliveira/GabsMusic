@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { FlatList, Image, View } from "react-native";
 import { Wrapper } from "../../../../components/Wrapper";
 import { search } from "../../../../services/search";
+import { TrackItem } from "../../components/TrackItem";
+import { TrackProps } from "../../types";
 import * as S from "./styles";
 
 export const Search = () => {
-  const [value, setValue] = useState("sidoka");
-
+  const [value, setValue] = useState("");
   const [tracks, setTracks] = useState([]);
 
   const onSearch = async () => {
-    const data = await search({ limit: 10, offset: 0, value: value });
-
-    // console.log(data[0].name);
+    const data = await search({ limit: 30, offset: 0, value: value });
     setTracks(data);
   };
 
   useEffect(() => {
     onSearch();
   }, [value]);
+
+  const renderItem = ({ item }: TrackProps) => <TrackItem item={item} />;
 
   return (
     <Wrapper>
@@ -28,10 +29,14 @@ export const Search = () => {
           placeholder="Pesquisar musica"
           onChangeText={(text) => setValue(text)}
         />
-        {tracks &&
-          tracks.map((item, index) => {
-            return <S.Text key={index}>{item.name}</S.Text>;
-          })}
+        <FlatList
+          style={{
+            height: "95%",
+          }}
+          data={tracks}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </S.Container>
     </Wrapper>
   );
