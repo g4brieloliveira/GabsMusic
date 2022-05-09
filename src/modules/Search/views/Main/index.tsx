@@ -1,3 +1,4 @@
+import { Sound } from "expo-av/build/Audio";
 import React, { useEffect, useState } from "react";
 import { FlatList, Image, View } from "react-native";
 import { Wrapper } from "../../../../components/Wrapper";
@@ -8,6 +9,7 @@ import * as S from "./styles";
 
 export const Search = () => {
   const [value, setValue] = useState("");
+  const [playingSound, setplayingSound] = useState<Sound | undefined>();
   const [tracks, setTracks] = useState([]);
 
   const onSearch = async () => {
@@ -19,7 +21,13 @@ export const Search = () => {
     onSearch();
   }, [value]);
 
-  const renderItem = ({ item }: TrackProps) => <TrackItem item={item} />;
+  const renderItem = ({ item }: { item: TrackProps }) => (
+    <TrackItem
+      item={item}
+      playingSound={playingSound}
+      setplayingSound={setplayingSound}
+    />
+  );
 
   return (
     <Wrapper>

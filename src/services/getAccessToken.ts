@@ -1,11 +1,9 @@
 import axios from "axios";
 import base64 from "react-native-base64";
+import { CLIENT_ID, CLIENT_SECRET } from "@env";
 
 const baseUrl = "https://accounts.spotify.com/api";
-
-const client_id = "f1e010e2016140249d49bffa192e2779";
-const client_secret = "9d740fa8573a48d4ba1727704396a8b5";
-const Authorization = `Basic ${base64.encode(client_id + ":" + client_secret)}`;
+const Authorization = `Basic ${base64.encode(CLIENT_ID + ":" + CLIENT_SECRET)}`;
 
 export const getAccessToken = async () => {
   const data = await axios(`${baseUrl}/token`, {

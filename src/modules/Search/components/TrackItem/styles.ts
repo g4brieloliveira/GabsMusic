@@ -1,22 +1,5 @@
-import {
-  TextInput,
-  View,
-  Text as RNText,
-  FlatList as RNFlatList,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text as RNText, TouchableOpacity } from "react-native";
 import styled from "styled-components";
-
-export const Container = styled(View)`
-  padding: 16px;
-  justify-content: space-between;
-`;
-
-export const Input = styled(TextInput)`
-  background-color: #eee;
-  padding: 8px;
-  border-radius: 8px;
-`;
 
 export const Text = styled(RNText)`
   color: #fff;
