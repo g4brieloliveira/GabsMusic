@@ -8,7 +8,7 @@ import { FavouritesNavigator } from "../modules/Favourites";
 import { ProfileNavigator } from "../modules/Profile";
 import { Ionicons } from "@expo/vector-icons";
 import { ROUTES } from "./routes";
-import { theme } from "../utils/theme";
+import { theme } from "../theme";
 
 const Tab = createBottomTabNavigator();
 
